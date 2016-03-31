@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- add bootstrap - the jquery is messing with the audio playback so let's wait and rewrite it in jquery later -->
+		<!-- <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+		<!-- link to my css -->
+		<link rel="stylesheet" type="text/css" href="SoundGame.css">	
+		<!-- old jquery -->
+		<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script> -->
+		<script>
+
+		//Array to hold sounds
+		var sounds = [
+				"http://cf-public-view.s3.amazonaws.com/PN447/AZ/Sounds%20Bites/R%26M/Annoyed%20Rick.mp3",
+				"http://cf-public-view.s3.amazonaws.com/PN447/AZ/Sounds%20Bites/R%26M/Beth%20and%20Jerry,%20Backseat%20Parenting.mp3",
+				"http://cf-public-view.s3.amazonaws.com/PN447/AZ/Sounds%20Bites/R%26M/Dropping%20Loads.mp3",
+				"http://cf-public-view.s3.amazonaws.com/PN447/AZ/Sounds%20Bites/R%26M/Half%20Morty.mp3",
+				"http://cf-public-view.s3.amazonaws.com/PN447/AZ/Sounds%20Bites/R%26M/Inside%20Ruben.mp3",
+				"http://cf-public-view.s3.amazonaws.com/PN447/AZ/Sounds%20Bites/R%26M/Jealousy%20Turns%20Women%20Off.mp3",
+				"http://cf-public-view.s3.amazonaws.com/PN447/AZ/Sounds%20Bites/R%26M/LET%20ME%20GO.mp3",
+				"http://cf-public-view.s3.amazonaws.com/PN447/AZ/Sounds%20Bites/R%26M/Like%20Old%20School%20Jews%20on%20a%20Saturday.mp3",
+				"http://cf-public-view.s3.amazonaws.com/PN447/AZ/Sounds%20Bites/R%26M/My%20Bad.mp3",
+				"http://cf-public-view.s3.amazonaws.com/PN447/AZ/Sounds%20Bites/R%26M/Rick%20is%20a%20dick.mp3",
+				"http://cf-public-view.s3.amazonaws.com/PN447/AZ/Sounds%20Bites/R%26M/sqrt%20of%20pi.mp3",
+				"http://cf-public-view.s3.amazonaws.com/PN447/AZ/Sounds%20Bites/R%26M/The%20Only%20Monster.mp3",
+				"http://cf-public-view.s3.amazonaws.com/PN447/AZ/Sounds%20Bites/R%26M/Too%20Tough!.mp3",
+				"http://cf-public-view.s3.amazonaws.com/PN447/AZ/Sounds%20Bites/R%26M/We're%20Losing%20Him.mp3",
+				"http://cf-public-view.s3.amazonaws.com/PN447/AZ/Sounds%20Bites/R%26M/Welcome%20to%20Anatomy%20Park.mp3",
+				"http://cf-public-view.s3.amazonaws.com/PN447/AZ/Sounds%20Bites/R%26M/You%20Don't%20Know%20Me%20-%20Goldenfold.mp3",
+			  ];
+
+	  	//Select random sound from sounds  
+		var soundFile = sounds[Math.floor(Math.random()*sounds.length)];
+
+		// creates array of audio type called fixedSounds
+		var fixedSounds = [];
+		for (i = 0; i < sounds.length; i++) {
+			fixedSounds[i] = new Audio();
+			fixedSounds[i] = sounds[i];
+		}
+
+		//Function to select and store random sound
+		function loadRandomSound() {
+
+			//Store sound in the player element 
+			document.getElementById("player").innerHTML="<embed src=\""+soundFile+"\" hidden=\"true\" autostart=\"true\" loop=\"false\" />";
+		}
+		
+		function clearRandomSound() {
+			soundFile=null;
+			document.getElementById("player").innerHTML="";
+		}
+
+		function loadContent(num) {
+				
+				//store values from fixedSounds into buttons
+				document.getElementById("div1").innerHTML="<embed src=\""+fixedSounds[num]+"\" hidden=\"true\" autostart=\"true\" loop=\"false\" />";
+		}
+
+
+
+		</script>
+	</head>
+
+	<body>
+
+		<!-- play random sound on button click -->
+		<button type='button' onclick='loadRandomSound();' onmouseover='clearRandomSound()' class='playButton'>Play</button>
+		<!-- store sound for button click -->
+		<div id="player"></div>
+
+		<!-- play sounds from fixedSounds -->
+		<div class="row clearfix">
+			<div class="col-1-4"><button type="button" onclick="loadContent(0)" class="button">1</button></div>
+			<div class="col-1-4"><button type="button" onclick="loadContent(1)" class="button">2</button></div>
+			<div class="col-1-4"><button type="button" onclick="loadContent(2)" class="button">3</button></div>
+			<div class="col-1-4"><button type="button" onclick="loadContent(3)" class="button">4</button></div>	
+		</div>
+		<div class="row clearfix">
+			<div class="col-1-4"><button type="button" onclick="loadContent(4)" class="button">5</button></div>
+			<div class="col-1-4"><button type="button" onclick="loadContent(5)" class="button">6</button></div>
+			<div class="col-1-4"><button type="button" onclick="loadContent(6)" class="button">7</button></div>
+			<div class="col-1-4"><button type="button" onclick="loadContent(7)" class="button">8</button></div>	
+		</div>
+		<div class="row clearfix">
+			<div class="col-1-4"><button type="button" onclick="loadContent(8)" class="button">9</button></div>
+			<div class="col-1-4"><button type="button" onclick="loadContent(9)" class="button">10</button></div>
+			<div class="col-1-4"><button type="button" onclick="loadContent(10)" class="button">11</button></div>
+			<div class="col-1-4"><button type="button" onclick="loadContent(11)" class="button">12</button></div>	
+		</div>
+		<div class="row clearfix">
+			<div class="col-1-4"><button type="button" onclick="loadContent(12)" class="button">13</button></div>
+			<div class="col-1-4"><button type="button" onclick="loadContent(13)" class="button">14</button></div>
+			<div class="col-1-4"><button type="button" onclick="loadContent(14)" class="button">15</button></div>
+			<div class="col-1-4"><button type="button" onclick="loadContent(15)" class="button">16</button></div>	
+		</div>
+		
+		
+		
+<!-- 		store fixedSounds in temporary div-->	
+	<div id="div1"></div>
+<!-- <div class="row clearfix">
+  <div class="col-1-4"></div>
+  <div class="col-1-4"></div>
+  <div class="col-1-4"></div>
+  <div class="col-1-4"></div>
+</div> -->
+
+		
+
+	</body>
+
+</html>
